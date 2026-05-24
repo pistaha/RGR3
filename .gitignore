@@ -3,3 +3,8 @@
 __pycache__/
 *.pyc
 .DS_Store
+.matplotlib-cache/
+run.log
+run_direct.log
+rgr3/*.png
+rgr3/*.csv

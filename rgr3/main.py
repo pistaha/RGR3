@@ -1,3 +1,9 @@
+from pathlib import Path
+import sys
+
+if __package__ is None or __package__ == "":
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from rgr3 import CSV_PATH
 from rgr3.analysis import RegressionAnalysis
 from rgr3.data_loader import DataLoader
@@ -28,6 +34,11 @@ def main():
 
     Plotter.models_plot(x, y, linear_model, quad_model, power_model)
     print("\nОбщий график моделей сохранён в файл models_comparison.png")
+    Plotter.individual_models_plot(x, y, linear_model, quad_model, power_model)
+    print(
+        "Отдельные графики моделей сохранены в файлы "
+        "linear_model.png, quadratic_model.png, power_model.png"
+    )
 
     Plotter.residual_plot(x, linear_model.residuals, "residuals_linear.png", "Остатки линейной модели")
     Plotter.residual_plot(x, quad_model.residuals, "residuals_quad.png", "Остатки квадратичной модели")
